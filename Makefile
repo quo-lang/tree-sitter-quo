@@ -1,7 +1,7 @@
 LANGUAGE_NAME := tree-sitter-quo
 HOMEPAGE_URL := https://github.com/quo-lang/tree-sitter-quo
 VERSION := 0.1.0
-DESCRIPTION := Tree-Sitter grammar for Quo language
+DESCRIPTION := Quo language
 
 # repository
 SRC_DIR := src

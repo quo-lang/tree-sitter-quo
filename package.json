@@ -1,7 +1,7 @@
 {
   "name": "tree-sitter-quo",
   "version": "0.1.0",
-  "description": "Tree-Sitter grammar for Quo language",
+  "description": "Quo language",
   "type": "module",
   "repository": {
     "type": "git",
@@ -12,7 +12,7 @@
   "author": {
     "name": "Vlad Krupinskii",
     "email": "vladkrupinskii@gmail.com",
-    "url": "https://github.com/mrvladus"
+    "url": ""
   },
   "main": "bindings/node",
   "types": "bindings/node",

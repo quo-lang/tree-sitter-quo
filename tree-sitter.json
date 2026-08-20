@@ -6,7 +6,9 @@
       "camelcase": "Quo",
       "title": "Quo",
       "scope": "source.quo",
-      "file-types": ["quo"],
+      "file-types": [
+        "quo"
+      ],
       "injection-regex": "^quo$",
       "class-name": "TreeSitterQuo"
     }
@@ -14,12 +16,12 @@
   "metadata": {
     "version": "0.1.0",
     "license": "ZLib",
-    "description": "Tree-Sitter grammar for Quo language",
+    "description": "Quo language",
     "authors": [
       {
         "name": "Vlad Krupinskii",
         "email": "vladkrupinskii@gmail.com",
-        "url": "https://github.com/mrvladus"
+        "url": ""
       }
     ],
     "links": {
@@ -29,8 +31,12 @@
   },
   "bindings": {
     "c": true,
-    "node": true,
-    "python": true,
-    "rust": true
+    "go": false,
+    "java": false,
+    "node": false,
+    "python": false,
+    "rust": true,
+    "swift": false,
+    "zig": false
   }
 }

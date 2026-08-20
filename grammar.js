@@ -1,24 +1,17 @@
-// Define precedence levels BEFORE the grammar
-const PREC = {
-  or: 1,
-  and: 2,
-  equality: 3,
-  comparison: 4,
-  term: 5,
-  factor: 6,
-  unary: 7,
-  call: 8,
-};
+/**
+ * @file Quo language
+ * @author Vlad Krupinskii <vladkrupinskii@gmail.com>
+ * @license ZLib
+ */
 
-module.exports = grammar({
+/// <reference types="tree-sitter-cli/dsl" />
+// @ts-check
+
+export default grammar({
   name: "quo",
 
   rules: {
-    number: ($) => /\d[_\d]*(\.\d[_\d]*)?/,
-    string: ($) => /"([^"\\]|\\.)*"/,
-    boolean: ($) => choice("true", "false"),
-    nil: ($) => "nil",
-    identifier: ($) => /[a-zA-Z_][a-zA-Z0-9_]*/,
-    comment: ($) => token(choice(seq("#", /.*/))),
+    identifier: ($) => /[a-z]+/,
+    number: ($) => /\d+/,
   },
 });

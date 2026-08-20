@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.13)
 
 project(tree-sitter-quo
         VERSION "0.1.0"
-        DESCRIPTION "Tree-Sitter grammar for Quo language"
+        DESCRIPTION "Quo language"
         HOMEPAGE_URL "https://github.com/quo-lang/tree-sitter-quo"
         LANGUAGES C)
 
