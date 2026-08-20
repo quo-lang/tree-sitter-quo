@@ -24,6 +24,6 @@ export default grammar({
 
     identifier: ($) => /[a-z]+/,
     number: ($) => /\d+/,
-    line_comment: ($) => token(seq("#", /[^\r\n]*/)),
+    line_comment: (_) => token(seq("#", /[^\r\n]*/)),
   },
 });
