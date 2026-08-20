@@ -196,7 +196,7 @@
           }
         ]
       },
-      "function": {
+      "name": {
         "multiple": false,
         "required": true,
         "types": [

@@ -13,7 +13,7 @@
 #define ALIAS_COUNT 0
 #define TOKEN_COUNT 41
 #define EXTERNAL_TOKEN_COUNT 0
-#define FIELD_COUNT 14
+#define FIELD_COUNT 13
 #define MAX_ALIAS_SEQUENCE_LENGTH 7
 #define MAX_RESERVED_WORD_SET_SIZE 0
 #define PRODUCTION_ID_COUNT 14
@@ -490,16 +490,15 @@ enum ts_field_identifiers {
   field_arguments = 2,
   field_condition = 3,
   field_consequence = 4,
-  field_function = 5,
-  field_key = 6,
-  field_left = 7,
-  field_member = 8,
-  field_name = 9,
-  field_object = 10,
-  field_operand = 11,
-  field_operator = 12,
-  field_right = 13,
-  field_value = 14,
+  field_key = 5,
+  field_left = 6,
+  field_member = 7,
+  field_name = 8,
+  field_object = 9,
+  field_operand = 10,
+  field_operator = 11,
+  field_right = 12,
+  field_value = 13,
 };
 
 static const char * const ts_field_names[] = {
@@ -508,7 +507,6 @@ static const char * const ts_field_names[] = {
   [field_arguments] = "arguments",
   [field_condition] = "condition",
   [field_consequence] = "consequence",
-  [field_function] = "function",
   [field_key] = "key",
   [field_left] = "left",
   [field_member] = "member",
@@ -549,7 +547,7 @@ static const TSFieldMapEntry ts_field_map_entries[] = {
   [6] =
     {field_arguments, 1},
     {field_arguments, 2},
-    {field_function, 0},
+    {field_name, 0},
   [9] =
     {field_member, 2},
     {field_object, 0},
@@ -560,7 +558,7 @@ static const TSFieldMapEntry ts_field_map_entries[] = {
     {field_arguments, 1},
     {field_arguments, 2},
     {field_arguments, 3},
-    {field_function, 0},
+    {field_name, 0},
   [17] =
     {field_key, 1},
     {field_value, 3},
@@ -569,7 +567,7 @@ static const TSFieldMapEntry ts_field_map_entries[] = {
     {field_arguments, 2},
     {field_arguments, 3},
     {field_arguments, 4},
-    {field_function, 0},
+    {field_name, 0},
   [24] =
     {field_alternative, 4},
     {field_condition, 0},
@@ -590,7 +588,7 @@ static const TSFieldMapEntry ts_field_map_entries[] = {
     {field_arguments, 3},
     {field_arguments, 4},
     {field_arguments, 5},
-    {field_function, 0},
+    {field_name, 0},
 };
 
 static const TSSymbol ts_alias_sequences[PRODUCTION_ID_COUNT][MAX_ALIAS_SEQUENCE_LENGTH] = {
