@@ -53,13 +53,40 @@ export default grammar({
     expression_statement: ($) => prec(1, $.expression),
 
     // Expressions
-    expression: ($) => choice($.literal, $.function_expression),
+    expression: ($) =>
+      choice(
+        $.unary_expression,
+        $.literal,
+        $.function_expression,
+        $.member_access_expression,
+        $.call_expression,
+      ),
+
+    unary_expression: ($) =>
+      prec(
+        PREC.unary,
+        seq(
+          field("operator", choice("!", "-")),
+          field("operand", $.expression),
+        ),
+      ),
 
     function_expression: ($) =>
-      seq(
-        "fn",
-        field("parameters", seq("(", commaSeparate($.identifier), ")")),
-        field("body", $.statement),
+      seq("fn", seq("(", commaSeparate($.identifier), ")"), $.statement),
+
+    call_expression: ($) =>
+      prec(
+        PREC.call,
+        seq(
+          field("function", $.expression),
+          field("arguments", seq("(", commaSeparate($.expression), ")")),
+        ),
+      ),
+
+    member_access_expression: ($) =>
+      prec(
+        PREC.call,
+        seq(field("object", $.expression), ".", field("member", $.identifier)),
       ),
 
     // Literals
