@@ -47,6 +47,14 @@
       "required": false,
       "types": [
         {
+          "type": "break_statement",
+          "named": true
+        },
+        {
+          "type": "continue_statement",
+          "named": true
+        },
+        {
           "type": "return_statement",
           "named": true
         },
@@ -86,6 +94,14 @@
   {
     "type": "=",
     "named": false
+  },
+  {
+    "type": "break_statement",
+    "named": true
+  },
+  {
+    "type": "continue_statement",
+    "named": true
   },
   {
     "type": "identifier",

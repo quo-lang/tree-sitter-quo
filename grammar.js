@@ -16,7 +16,13 @@ export default grammar({
   rules: {
     source_file: ($) => repeat($._statement),
 
-    _statement: ($) => choice($.var_statement, $.return_statement),
+    _statement: ($) =>
+      choice(
+        $.var_statement,
+        $.return_statement,
+        $.break_statement,
+        $.continue_statement,
+      ),
 
     var_statement: ($) =>
       seq(
@@ -26,6 +32,8 @@ export default grammar({
       ),
 
     return_statement: ($) => seq("return", optional($.expression)),
+    break_statement: (_) => "break",
+    continue_statement: (_) => "continue",
 
     expression: ($) => choice($.identifier, $.string, $.number),
 
