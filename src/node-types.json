@@ -1,10 +1,5 @@
 [
   {
-    "type": "boolean",
-    "named": true,
-    "fields": {}
-  },
-  {
     "type": "break_statement",
     "named": true,
     "fields": {}
@@ -130,15 +125,15 @@
     "named": false
   },
   {
+    "type": "boolean",
+    "named": true
+  },
+  {
     "type": "break",
     "named": false
   },
   {
     "type": "continue",
-    "named": false
-  },
-  {
-    "type": "false",
     "named": false
   },
   {
@@ -165,10 +160,6 @@
   {
     "type": "string",
     "named": true
-  },
-  {
-    "type": "true",
-    "named": false
   },
   {
     "type": "var",
