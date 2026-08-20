@@ -203,6 +203,10 @@
           {
             "type": "identifier",
             "named": true
+          },
+          {
+            "type": "member_access_expression",
+            "named": true
           }
         ]
       }

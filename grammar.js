@@ -132,7 +132,7 @@ export default grammar({
       prec(
         PREC.call,
         seq(
-          field("function", $.identifier),
+          field("function", choice($.identifier, $.member_access_expression)),
           field("arguments", seq("(", commaSeparate($.expression), ")")),
         ),
       ),
