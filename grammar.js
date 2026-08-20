@@ -128,19 +128,19 @@ export default grammar({
     function_expression: ($) =>
       seq("fn", seq("(", commaSeparate($.identifier), ")"), $.statement),
 
+    member_access_expression: ($) =>
+      prec(
+        PREC.call,
+        seq(field("object", $.expression), ".", field("member", $.identifier)),
+      ),
+
     call_expression: ($) =>
       prec(
         PREC.call,
         seq(
-          field("function", choice($.identifier, $.member_access_expression)),
+          field("function", $.expression),
           field("arguments", seq("(", commaSeparate($.expression), ")")),
         ),
-      ),
-
-    member_access_expression: ($) =>
-      prec(
-        PREC.call,
-        seq(field("object", $.identifier), ".", field("member", $.identifier)),
       ),
 
     // Literals
