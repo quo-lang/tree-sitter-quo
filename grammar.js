@@ -7,14 +7,15 @@
 /// <reference types="tree-sitter-cli/dsl" />
 
 const PREC = {
-  or: 1,
-  and: 2,
-  equality: 3,
-  comparison: 4,
-  term: 5,
-  factor: 6,
-  unary: 7,
-  call: 8,
+  ternary: 1, // Add ternary precedence
+  or: 2, // Increment all others
+  and: 3,
+  equality: 4,
+  comparison: 5,
+  term: 6,
+  factor: 7,
+  unary: 8,
+  call: 9,
 };
 
 function commaSeparate(rule) {
@@ -50,16 +51,21 @@ export default grammar({
     return_statement: ($) => prec.right(seq("return", optional($.expression))),
     break_statement: (_) => seq("break"),
     continue_statement: (_) => seq("continue"),
-    expression_statement: ($) => prec(1, $.expression),
+    // Keep expression_statement at precedence 0
+    expression_statement: ($) => prec(0, $.expression),
 
     // Expressions
     expression: ($) =>
       choice(
         $.unary_expression,
-        $.literal,
+        $.binary_expression,
+        $.grouping_expression,
+        $.ternary_expression,
+        $.assignment_expression,
         $.function_expression,
-        $.member_access_expression,
         $.call_expression,
+        $.member_access_expression,
+        $.literal_expression,
       ),
 
     unary_expression: ($) =>
@@ -68,6 +74,55 @@ export default grammar({
         seq(
           field("operator", choice("!", "-")),
           field("operand", $.expression),
+        ),
+      ),
+
+    binary_expression: ($) => {
+      const table = [
+        ["or", PREC.or],
+        ["and", PREC.and],
+        [choice("==", "!="), PREC.equality],
+        [choice("<", ">", "<=", ">="), PREC.comparison],
+        [choice("+", "-"), PREC.term],
+        [choice("*", "/", "%"), PREC.factor],
+      ];
+
+      return choice(
+        ...table.map(([operator, precedence]) =>
+          prec.left(
+            precedence,
+            seq(
+              field("left", $.expression),
+              field("operator", operator),
+              field("right", $.expression),
+            ),
+          ),
+        ),
+      );
+    },
+
+    grouping_expression: ($) => seq("(", $.expression, ")"),
+
+    assignment_expression: ($) =>
+      prec.right(
+        2,
+        seq(
+          field("left", $.identifier),
+          field("operator", choice("=", "+=", "-=", "*=", "/=")),
+          field("right", $.expression),
+        ),
+      ),
+
+    // FIX: Add precedence to ternary_expression
+    ternary_expression: ($) =>
+      prec.right(
+        PREC.ternary,
+        seq(
+          field("condition", $.expression),
+          "?",
+          field("consequence", $.expression),
+          ":",
+          field("alternative", $.expression),
         ),
       ),
 
@@ -90,7 +145,7 @@ export default grammar({
       ),
 
     // Literals
-    literal: ($) =>
+    literal_expression: ($) =>
       choice($.string, $.number, $.boolean, $.nil, $.array, $.dictionary),
 
     identifier: (_) => /[A-Za-z_][A-Za-z0-9_]*/,
