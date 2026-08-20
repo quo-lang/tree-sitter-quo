@@ -1,15 +1,5 @@
 [
   {
-    "type": "break_statement",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "continue_statement",
-    "named": true,
-    "fields": {}
-  },
-  {
     "type": "expression",
     "named": true,
     "fields": {},
@@ -106,12 +96,12 @@
     "named": false
   },
   {
-    "type": "break",
-    "named": false
+    "type": "break_statement",
+    "named": true
   },
   {
-    "type": "continue",
-    "named": false
+    "type": "continue_statement",
+    "named": true
   },
   {
     "type": "identifier",
