@@ -19,9 +19,13 @@ export default grammar({
     _statement: ($) => choice($.var_statement, $.return_statement),
 
     var_statement: ($) =>
-      seq("var", $.identifier, optional(seq("=", $.expression))),
+      seq(
+        "var",
+        field("name", $.identifier),
+        optional(seq("=", field("value", $.expression))),
+      ),
 
-    return_statement: ($) => seq("return", $.expression),
+    return_statement: ($) => seq("return", optional($.expression)),
 
     expression: ($) => choice($.identifier, $.string, $.number),
 
