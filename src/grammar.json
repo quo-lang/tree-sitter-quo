@@ -116,8 +116,13 @@
       "members": [
         {
           "type": "SYMBOL",
-          "name": "identifier"
-        },
+          "name": "literal"
+        }
+      ]
+    },
+    "literal": {
+      "type": "CHOICE",
+      "members": [
         {
           "type": "SYMBOL",
           "name": "string"

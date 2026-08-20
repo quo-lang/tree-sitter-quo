@@ -35,8 +35,10 @@ export default grammar({
     break_statement: (_) => seq("break"),
     continue_statement: (_) => seq("continue"),
 
-    expression: ($) =>
-      choice($.identifier, $.string, $.number, $.boolean, $.nil),
+    expression: ($) => choice($.literal),
+
+    // Literals
+    literal: ($) => choice($.string, $.number, $.boolean, $.nil),
 
     identifier: (_) => /[A-Za-z_][A-Za-z0-9_]*/,
     string: (_) => /"([^"\\]|\\.)*"/,
