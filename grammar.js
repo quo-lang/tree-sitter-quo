@@ -28,9 +28,9 @@ export default grammar({
     $.line_comment,
   ],
   rules: {
-    source_file: ($) => repeat($._statement),
+    source_file: ($) => repeat($.statement),
 
-    _statement: ($) =>
+    statement: ($) =>
       choice(
         $.var_statement,
         $.block_statement,
@@ -46,14 +46,21 @@ export default grammar({
         field("name", $.identifier),
         optional(seq("=", field("value", $.expression))),
       ),
-    block_statement: ($) => prec(1, seq("{", repeat($._statement), "}")),
+    block_statement: ($) => prec(1, seq("{", repeat($.statement), "}")),
     return_statement: ($) => prec.right(seq("return", optional($.expression))),
     break_statement: (_) => seq("break"),
     continue_statement: (_) => seq("continue"),
     expression_statement: ($) => prec(1, $.expression),
 
     // Expressions
-    expression: ($) => choice($.literal),
+    expression: ($) => choice($.literal, $.function_expression),
+
+    function_expression: ($) =>
+      seq(
+        "fn",
+        field("parameters", seq("(", commaSeparate($.identifier), ")")),
+        field("body", $.statement),
+      ),
 
     // Literals
     literal: ($) =>
