@@ -7,8 +7,8 @@
 /// <reference types="tree-sitter-cli/dsl" />
 
 const PREC = {
-  ternary: 1, // Add ternary precedence
-  or: 2, // Increment all others
+  ternary: 1,
+  or: 2,
   and: 3,
   equality: 4,
   comparison: 5,
@@ -38,6 +38,8 @@ export default grammar({
         $.return_statement,
         $.break_statement,
         $.continue_statement,
+        $.if_statement,
+        $.loop_statement,
         $.expression_statement,
       ),
 
@@ -51,7 +53,35 @@ export default grammar({
     return_statement: ($) => prec.right(seq("return", optional($.expression))),
     break_statement: (_) => seq("break"),
     continue_statement: (_) => seq("continue"),
-    // Keep expression_statement at precedence 0
+
+    // If statement
+    if_statement: ($) =>
+      seq(
+        "if",
+        field("condition", $.expression),
+        field("consequence", $.block_statement),
+        optional(
+          seq(
+            "else",
+            field("alternative", choice($.if_statement, $.block_statement)),
+          ),
+        ),
+      ),
+
+    // Loop statement
+    loop_statement: ($) =>
+      seq(
+        "loop",
+        "(",
+        optional(field("initializer", $.statement)),
+        ",",
+        optional(field("condition", $.expression)),
+        ",",
+        optional(field("increment", $.statement)),
+        ")",
+        field("body", $.block_statement),
+      ),
+
     expression_statement: ($) => prec(0, $.expression),
 
     // Expressions
