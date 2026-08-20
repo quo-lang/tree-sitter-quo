@@ -9,7 +9,10 @@
 
 export default grammar({
   name: "quo",
-
+  extras: ($) => [
+    /\s/, // whitespace
+    $.comment,
+  ],
   rules: {
     source_file: ($) => repeat($._statement),
 
@@ -17,14 +20,10 @@ export default grammar({
 
     return_statement: ($) => seq("return", $.expression),
 
-    expression: ($) =>
-      choice(
-        $.identifier,
-        $.number,
-        // TODO: other kinds of expressions
-      ),
+    expression: ($) => choice($.identifier, $.number),
 
     identifier: ($) => /[a-z]+/,
     number: ($) => /\d+/,
+    comment: ($) => token(seq("#", /.*/)),
   },
 });
