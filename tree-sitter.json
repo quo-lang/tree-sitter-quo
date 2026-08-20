@@ -6,9 +6,7 @@
       "camelcase": "Quo",
       "title": "Quo",
       "scope": "source.quo",
-      "file-types": [
-        "quo"
-      ],
+      "file-types": ["quo"],
       "injection-regex": "^quo$",
       "class-name": "TreeSitterQuo"
     }
@@ -31,12 +29,8 @@
   },
   "bindings": {
     "c": true,
-    "go": true,
-    "java": false,
     "node": true,
     "python": true,
-    "rust": true,
-    "swift": true,
-    "zig": false
+    "rust": true
   }
 }
