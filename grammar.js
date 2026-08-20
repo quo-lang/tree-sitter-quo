@@ -140,7 +140,7 @@ export default grammar({
     member_access_expression: ($) =>
       prec(
         PREC.call,
-        seq(field("object", $.expression), ".", field("member", $.identifier)),
+        seq(field("object", $.identifier), ".", field("member", $.identifier)),
       ),
 
     // Literals

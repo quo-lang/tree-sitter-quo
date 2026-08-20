@@ -754,7 +754,7 @@
             "name": "object",
             "content": {
               "type": "SYMBOL",
-              "name": "expression"
+              "name": "identifier"
             }
           },
           {
