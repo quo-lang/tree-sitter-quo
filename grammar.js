@@ -11,7 +11,7 @@ export default grammar({
   name: "quo",
   extras: ($) => [
     /\s/, // whitespace
-    $.comment,
+    $.line_comment,
   ],
   rules: {
     source_file: ($) => repeat($._statement),
@@ -24,6 +24,6 @@ export default grammar({
 
     identifier: ($) => /[a-z]+/,
     number: ($) => /\d+/,
-    comment: ($) => token(seq("#", /.*/)),
+    line_comment: ($) => token(seq("#", /[^\r\n]*/)),
   },
 });
