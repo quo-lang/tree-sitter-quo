@@ -131,14 +131,18 @@ export default grammar({
     member_access_expression: ($) =>
       prec(
         PREC.call,
-        seq(field("object", $.expression), ".", field("member", $.identifier)),
+        seq(
+          field("object", choice($.identifier, $.member_access_expression)),
+          ".",
+          field("member", $.identifier),
+        ),
       ),
 
     call_expression: ($) =>
       prec(
         PREC.call,
         seq(
-          field("function", $.expression),
+          field("function", choice($.identifier, $.member_access_expression)),
           field("arguments", seq("(", commaSeparate($.expression), ")")),
         ),
       ),
