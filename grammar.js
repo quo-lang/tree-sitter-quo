@@ -28,17 +28,7 @@ export default grammar({
     identifier: (_) => /[A-Za-z_][A-Za-z0-9_]*/,
 
     string: (_) => /"([^"\\]|\\.)*"/,
-
-    integer_literal: (_) => /[0-9][0-9_]*/,
-    float_literal: (_) => {
-      const decimal_digits = /[0-9_]+/;
-      const leading_decimal_digit = /[0-9]/;
-      const end = seq(".", decimal_digits);
-      return token(
-        choice(seq(leading_decimal_digit, optional(decimal_digits), end), end),
-      );
-    },
-    number: ($) => choice($.integer_literal, $.float_literal),
+    number: ($) => /\d[_\d]*(\.\d[_\d]*)?/,
 
     line_comment: (_) => token(seq("#", /[^\r\n]*/)),
   },
