@@ -140,6 +140,23 @@
       "type": "PATTERN",
       "value": "\\d[_\\d]*(\\.\\d[_\\d]*)?"
     },
+    "boolean": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "true"
+        },
+        {
+          "type": "STRING",
+          "value": "false"
+        }
+      ]
+    },
+    "nil": {
+      "type": "STRING",
+      "value": "nil"
+    },
     "line_comment": {
       "type": "TOKEN",
       "content": {

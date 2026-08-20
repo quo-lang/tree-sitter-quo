@@ -40,7 +40,9 @@ export default grammar({
     identifier: (_) => /[A-Za-z_][A-Za-z0-9_]*/,
 
     string: (_) => /"([^"\\]|\\.)*"/,
-    number: ($) => /\d[_\d]*(\.\d[_\d]*)?/,
+    number: (_) => /\d[_\d]*(\.\d[_\d]*)?/,
+    boolean: (_) => choice("true", "false"),
+    nil: (_) => "nil",
 
     line_comment: (_) => token(seq("#", /[^\r\n]*/)),
   },
