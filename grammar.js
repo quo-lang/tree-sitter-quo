@@ -32,8 +32,8 @@ export default grammar({
       ),
 
     return_statement: ($) => seq("return", optional($.expression)),
-    break_statement: (_) => "break",
-    continue_statement: (_) => "continue",
+    break_statement: (_) => token("break"),
+    continue_statement: (_) => token("continue"),
 
     expression: ($) => choice($.identifier, $.string, $.number),
 

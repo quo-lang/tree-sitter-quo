@@ -94,12 +94,18 @@
       ]
     },
     "break_statement": {
-      "type": "STRING",
-      "value": "break"
+      "type": "TOKEN",
+      "content": {
+        "type": "STRING",
+        "value": "break"
+      }
     },
     "continue_statement": {
-      "type": "STRING",
-      "value": "continue"
+      "type": "TOKEN",
+      "content": {
+        "type": "STRING",
+        "value": "continue"
+      }
     },
     "expression": {
       "type": "CHOICE",
