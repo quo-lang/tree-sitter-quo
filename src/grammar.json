@@ -803,7 +803,11 @@
         },
         {
           "type": "SYMBOL",
-          "name": "boolean"
+          "name": "true"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "false"
         },
         {
           "type": "SYMBOL",
@@ -831,25 +835,17 @@
       "type": "PATTERN",
       "value": "\\d[_\\d]*(\\.\\d[_\\d]*)?"
     },
-    "boolean": {
-      "type": "TOKEN",
-      "content": {
-        "type": "CHOICE",
-        "members": [
-          {
-            "type": "STRING",
-            "value": "true"
-          },
-          {
-            "type": "STRING",
-            "value": "false"
-          }
-        ]
-      }
-    },
     "nil": {
       "type": "STRING",
       "value": "nil"
+    },
+    "true": {
+      "type": "STRING",
+      "value": "true"
+    },
+    "false": {
+      "type": "STRING",
+      "value": "false"
     },
     "array": {
       "type": "SEQ",

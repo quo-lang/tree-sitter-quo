@@ -149,13 +149,14 @@ export default grammar({
 
     // Literals
     literal_expression: ($) =>
-      choice($.string, $.number, $.boolean, $.nil, $.array, $.dictionary),
+      choice($.string, $.number, $.true, $.false, $.nil, $.array, $.dictionary),
 
     identifier: (_) => /[A-Za-z_][A-Za-z0-9_]*/,
     string: (_) => /"([^"\\]|\\.)*"/,
     number: (_) => /\d[_\d]*(\.\d[_\d]*)?/,
-    boolean: (_) => token(choice("true", "false")),
     nil: (_) => "nil",
+    true: (_) => "true",
+    false: (_) => "false",
     array: ($) => seq("[", commaSeparate($.expression), "]"),
     dictionary: ($) =>
       seq(
