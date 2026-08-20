@@ -54,6 +54,11 @@
     "named": true
   },
   {
+    "type": "line_comment",
+    "named": true,
+    "extra": true
+  },
+  {
     "type": "number",
     "named": true
   },
