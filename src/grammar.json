@@ -672,10 +672,10 @@
         "members": [
           {
             "type": "FIELD",
-            "name": "name",
+            "name": "function",
             "content": {
               "type": "SYMBOL",
-              "name": "expression"
+              "name": "identifier"
             }
           },
           {

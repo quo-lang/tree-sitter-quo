@@ -113,7 +113,6 @@ export default grammar({
         ),
       ),
 
-    // FIX: Add precedence to ternary_expression
     ternary_expression: ($) =>
       prec.right(
         PREC.ternary,
@@ -133,7 +132,7 @@ export default grammar({
       prec(
         PREC.call,
         seq(
-          field("name", $.expression),
+          field("function", $.identifier),
           field("arguments", seq("(", commaSeparate($.expression), ")")),
         ),
       ),

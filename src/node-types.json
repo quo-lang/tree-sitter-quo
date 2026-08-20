@@ -196,12 +196,12 @@
           }
         ]
       },
-      "name": {
+      "function": {
         "multiple": false,
         "required": true,
         "types": [
           {
-            "type": "expression",
+            "type": "identifier",
             "named": true
           }
         ]
