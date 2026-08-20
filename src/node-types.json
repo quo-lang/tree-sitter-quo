@@ -1,5 +1,10 @@
 [
   {
+    "type": "boolean",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "break_statement",
     "named": true,
     "fields": {}
@@ -18,7 +23,15 @@
       "required": true,
       "types": [
         {
+          "type": "boolean",
+          "named": true
+        },
+        {
           "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "nil",
           "named": true
         },
         {
@@ -114,6 +127,10 @@
     "named": false
   },
   {
+    "type": "false",
+    "named": false
+  },
+  {
     "type": "identifier",
     "named": true
   },
@@ -121,6 +138,10 @@
     "type": "line_comment",
     "named": true,
     "extra": true
+  },
+  {
+    "type": "nil",
+    "named": true
   },
   {
     "type": "number",
@@ -133,6 +154,10 @@
   {
     "type": "string",
     "named": true
+  },
+  {
+    "type": "true",
+    "named": false
   },
   {
     "type": "var",
