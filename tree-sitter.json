@@ -19,12 +19,12 @@
       {
         "name": "Vlad Krupinskii",
         "email": "vladkrupinskii@gmail.com",
-        "url": ""
+        "url": "https://github.com/mrvladus"
       }
     ],
     "links": {
       "repository": "https://github.com/quo-lang/tree-sitter-quo",
-      "funding": ""
+      "funding": "https://github.com/quo-lang"
     }
   },
   "bindings": {
