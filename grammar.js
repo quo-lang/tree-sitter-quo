@@ -53,8 +53,6 @@ export default grammar({
     return_statement: ($) => prec.right(seq("return", optional($.expression))),
     break_statement: (_) => seq("break"),
     continue_statement: (_) => seq("continue"),
-
-    // If statement
     if_statement: ($) =>
       seq(
         "if",
@@ -67,8 +65,6 @@ export default grammar({
           ),
         ),
       ),
-
-    // Loop statement
     loop_statement: ($) =>
       seq(
         "loop",
