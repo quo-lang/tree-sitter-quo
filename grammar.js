@@ -54,15 +54,12 @@ export default grammar({
     break_statement: (_) => seq("break"),
     continue_statement: (_) => seq("continue"),
     if_statement: ($) =>
-      seq(
-        "if",
-        field("condition", $.expression),
-        field("consequence", $.block_statement),
-        optional(
-          seq(
-            "else",
-            field("alternative", choice($.if_statement, $.block_statement)),
-          ),
+      prec.right(
+        seq(
+          "if",
+          field("condition", $.expression),
+          field("consequence", $.statement),
+          optional(seq("else", field("alternative", $.statement))),
         ),
       ),
     loop_statement: ($) =>
@@ -73,9 +70,9 @@ export default grammar({
         ",",
         optional(field("condition", $.expression)),
         ",",
-        optional(field("increment", $.statement)),
+        optional(field("increment", $.expression)),
         ")",
-        field("body", $.block_statement),
+        field("body", $.statement),
       ),
 
     expression_statement: ($) => prec(0, $.expression),

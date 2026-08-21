@@ -348,11 +348,7 @@
         "required": false,
         "types": [
           {
-            "type": "block_statement",
-            "named": true
-          },
-          {
-            "type": "if_statement",
+            "type": "statement",
             "named": true
           }
         ]
@@ -372,7 +368,7 @@
         "required": true,
         "types": [
           {
-            "type": "block_statement",
+            "type": "statement",
             "named": true
           }
         ]
@@ -427,7 +423,7 @@
         "required": true,
         "types": [
           {
-            "type": "block_statement",
+            "type": "statement",
             "named": true
           }
         ]
@@ -447,7 +443,7 @@
         "required": false,
         "types": [
           {
-            "type": "statement",
+            "type": "expression",
             "named": true
           }
         ]
